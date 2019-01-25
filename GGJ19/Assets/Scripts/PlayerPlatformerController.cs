@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerPlatformerController : MonoBehaviour
 {
+    private PickUp pickUp;
+
     public bool isPlayerOne = false;
 
     [SerializeField] private float speed_Modifier;
@@ -16,6 +18,7 @@ public class PlayerPlatformerController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        pickUp = this.transform.GetChild(0).GetComponent<PickUp>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
@@ -24,6 +27,7 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         Move();
         Animate();
+        Interact();
     }
 
     private void Move()
@@ -137,5 +141,37 @@ public class PlayerPlatformerController : MonoBehaviour
         //}
         //else
         //    animator.SetBool("move", false);
+    }
+
+    private void Interact()
+    {
+        if(isPlayerOne)
+        {
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                if(pickUp.held_Object == null)
+                {
+                    pickUp.GrabItem();
+                }
+                else
+                {
+                    pickUp.ThrowItem(false);
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (pickUp.held_Object == null)
+                {
+                    pickUp.GrabItem();
+                }
+                else
+                {
+                    pickUp.ThrowItem(true);
+                }
+            }
+        }
     }
 }
