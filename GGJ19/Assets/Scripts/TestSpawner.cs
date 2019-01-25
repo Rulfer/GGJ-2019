@@ -13,11 +13,11 @@ public class TestSpawner : MonoBehaviour
         sides = FindObjectsOfType<Side>();
         for(int i = 0; i < 10; i++)
         {
-            spawnThrowable();
+            SpawnThrowable();
         }
     }
 
-    private void spawnThrowable()
+    private void SpawnThrowable()
     {
         Transform transform = sides[Random.Range(0, sides.Length)].transform;
         GameObject element = prefabs[Random.Range(0, prefabs.Count)];
@@ -30,7 +30,7 @@ public class TestSpawner : MonoBehaviour
         timer += Time.deltaTime;
         if(timer % 60 >= 4.0f)
         {
-            spawnThrowable();
+            SpawnThrowable();
             timer = 0.0f;
         }
     }
