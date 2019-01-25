@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Side : MonoBehaviour
@@ -18,7 +17,8 @@ public class Side : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Throwable") {
+        if (collision.gameObject.tag == "Throwable")
+        {
             enterCounter += 1;
             elementsInside.Add(collision.gameObject);
         }
