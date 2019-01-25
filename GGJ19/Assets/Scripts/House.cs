@@ -3,8 +3,8 @@
 public class House : MonoBehaviour
 {
     GameObject house;
-    [SerializeField] private float startAngularDrag = 100;
-    [SerializeField] private float angularDragChangeRate = 10.0f;
+    private float startAngularDrag = 100;
+    private float angularDragChangeRate = 15.0f;
     float timer;
  
     void Start()
