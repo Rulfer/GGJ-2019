@@ -23,6 +23,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private void Update()
     {
         Move();
+        Animate();
     }
 
     private void Move()
@@ -41,12 +42,17 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            currentSpeed -= speed_Modifier * Time.deltaTime;
+            if (currentSpeed < -max_Speed)
+                currentSpeed -= speed_Modifier * Time.deltaTime;
+            else
+                currentSpeed = -max_Speed;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-
-            currentSpeed += speed_Modifier * Time.deltaTime;
+            if (currentSpeed < max_Speed)
+                currentSpeed += speed_Modifier * Time.deltaTime;
+            else
+                currentSpeed = max_Speed;
         }
         else
         {
@@ -94,5 +100,31 @@ public class PlayerPlatformerController : MonoBehaviour
         }
 
         this.transform.localPosition = new Vector2(this.transform.localPosition.x + currentSpeed, this.transform.localPosition.y);
+    }
+
+    private void Animate()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            animator.SetBool("move_right", true);
+            this.transform.GetChild(0).localScale = new Vector2(-4.998992f, 4.998992f);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetBool("move_right", true);
+            this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
+        }
+        else
+        {
+            animator.SetBool("move_right", false);
+
+        }
+        //if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        //{
+        //    animator.SetBool("move_right", true);
+        //    this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
+        //}
+        //else
+        //    animator.SetBool("move_right", false);
     }
 }
