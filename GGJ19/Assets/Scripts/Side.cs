@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Side : MonoBehaviour
 {
-    HashSet<GameObject> elementsInside = new HashSet<GameObject>();
+    public HashSet<GameObject> elementsInside = new HashSet<GameObject>();
     public int enterCounter;
     public int leavecounter;
     GameObject side;
@@ -13,6 +13,11 @@ public class Side : MonoBehaviour
         side = FindObjectOfType<Side>().gameObject;
         enterCounter = 0;
         leavecounter = 0;
+    }
+
+    public void AddElement(GameObject element)
+    {
+        elementsInside.Add(element);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
