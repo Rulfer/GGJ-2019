@@ -19,16 +19,23 @@ public class TestSpawner : MonoBehaviour
 
     private void SpawnThrowable()
     {
-        Transform transform = sides[Random.Range(0, sides.Length)].transform;
+        Side side;
+        if (sides[0].elementsInside.Count < sides[1].elementsInside.Count)
+            side = sides[0];
+        else if (sides[0].elementsInside.Count > sides[1].elementsInside.Count)
+            side = sides[1];
+        else
+            side = sides[Random.Range(0, sides.Length)];
         GameObject element = prefabs[Random.Range(0, prefabs.Count)];
         element.GetComponent<Rigidbody2D>().mass = Random.Range(1, 10);
-        Instantiate(element, transform.position, Quaternion.identity);
+        element = Instantiate(element, side.transform.position, Quaternion.identity);
+        side.AddElement(element);
     }
 
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer % 60 >= 4.0f)
+        if(timer % 60 >= 5.0f)
         {
             SpawnThrowable();
             timer = 0.0f;
