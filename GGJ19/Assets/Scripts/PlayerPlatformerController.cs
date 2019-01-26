@@ -34,7 +34,7 @@ public class PlayerPlatformerController : MonoBehaviour
         throwCounter = 0;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
         Interact();
@@ -54,6 +54,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private void PlayerOneMove()
     {
+        bool noInput = true;
         if (Input.GetKey(KeyCode.A))
         {
             if (currentSpeed < -max_Speed)
@@ -62,8 +63,10 @@ public class PlayerPlatformerController : MonoBehaviour
                 currentSpeed = -max_Speed;
             animator.SetBool("move", true);
             this.transform.GetChild(0).localScale = new Vector2(-4.998992f, 4.998992f);
+
+            noInput = false;
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             if (currentSpeed < max_Speed)
                 currentSpeed += speed_Modifier * Time.deltaTime;
@@ -72,8 +75,12 @@ public class PlayerPlatformerController : MonoBehaviour
 
             animator.SetBool("move", true);
             this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
+
+            noInput = false;
         }
-        else
+        
+
+        if(noInput)
         {
             if (currentSpeed > 0.01 || currentSpeed < -0.01)
             {
@@ -100,6 +107,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private void PlayerTwoMove()
     {
+        bool noInput = true;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             if (currentSpeed < -max_Speed)
@@ -109,8 +117,9 @@ public class PlayerPlatformerController : MonoBehaviour
 
             animator.SetBool("move", true);
             this.transform.GetChild(0).localScale = new Vector2(-4.998992f, 4.998992f);
+            noInput = false;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             if (currentSpeed < max_Speed)
                 currentSpeed += speed_Modifier * Time.deltaTime;
@@ -119,8 +128,10 @@ public class PlayerPlatformerController : MonoBehaviour
 
             animator.SetBool("move", true);
             this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
+            noInput = false;
         }
-        else
+
+        if (noInput)
         {
             if (currentSpeed > 0.01 || currentSpeed < -0.01)
             {
