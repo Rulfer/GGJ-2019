@@ -19,9 +19,14 @@ public class PlayerPlatformerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    private AudioSource source = null;
+    [SerializeField] private AudioClip clip_Grab;
+    [SerializeField] private AudioClip clip_Throw;
+
     // Use this for initialization
     void Awake()
     {
+        source = this.GetComponent<AudioSource>();
         rigid = this.GetComponent<Rigidbody2D>();
         pickUp = this.transform.GetChild(0).GetComponent<PickUp>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -148,10 +153,14 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 if(pickUp.held_Object == null)
                 {
+                    source.clip = clip_Grab;
+                    source.Play();
                     pickUp.GrabItem(rigid);
                 }
                 else
                 {
+                    source.clip = clip_Throw;
+                    source.Play();
                     rigid.mass = 0.0001f;
                     throwCounter += 1;
                     pickUp.ThrowItem(false);
@@ -164,10 +173,14 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 if (pickUp.held_Object == null)
                 {
+                    source.clip = clip_Grab;
+                    source.Play();
                     pickUp.GrabItem(rigid);
                 }
                 else
                 {
+                    source.clip = clip_Throw;
+                    source.Play();
                     rigid.mass = 0.0001f;
                     throwCounter += 1;
                     pickUp.ThrowItem(true);
