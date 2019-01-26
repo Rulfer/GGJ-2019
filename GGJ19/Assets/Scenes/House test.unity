@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterCounter: 0
-  leavecounter: 0
+  leaveCounter: 0
 --- !u!61 &1084265816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2031,7 +2031,7 @@ GameObject:
   - component: {fileID: 1352886154}
   - component: {fileID: 1352886153}
   m_Layer: 5
-  m_Name: UI_Canvas
+  m_Name: ui_Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2410,7 +2410,7 @@ GameObject:
   - component: {fileID: 1733983470}
   - component: {fileID: 1733983469}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txt_Intro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2735,7 +2735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterCounter: 0
-  leavecounter: 0
+  leaveCounter: 0
 --- !u!61 &1949988945
 BoxCollider2D:
   m_ObjectHideFlags: 0
