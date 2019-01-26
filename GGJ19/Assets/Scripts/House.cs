@@ -18,13 +18,18 @@ public class House : MonoBehaviour
 
     private void Update()
     {
+        AdjustAngularDrag();
+        CheckGameEnd();
+    }
+
+    private void AdjustAngularDrag()
+    {
         timer += Time.deltaTime;
         if (timer % 60 >= angularDragChangeRate)
         {
             house.GetComponent<Rigidbody2D>().angularDrag /= 2;
             timer = 0.0f;
         }
-        CheckGameEnd();
     }
 
     private void CheckGameEnd()
