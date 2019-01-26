@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Side : MonoBehaviour
 {
-    [HideInInspector] public HashSet<GameObject> elementsInside = new HashSet<GameObject>();
+    [HideInInspector] public HashSet<GameObject> elementsInside;
     [HideInInspector] public int enterCounter;
     [HideInInspector] public int leaveCounter;
     GameObject side;
 
     void Start()
     {
+        elementsInside = new HashSet<GameObject>();
         side = FindObjectOfType<Side>().gameObject;
         enterCounter = 0;
         leaveCounter = 0;
