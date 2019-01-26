@@ -7,8 +7,11 @@ public class ObjectAudio : MonoBehaviour
     private AudioSource source;
     [SerializeField] private AudioClip[] clips;
 
+    private PickUp[] pickUps;
+
     private void Start()
     {
+        pickUps = GameObject.FindObjectsOfType<PickUp>();
         source = this.GetComponent<AudioSource>();
         source.clip = clips[Random.Range(0, clips.Length)];
     }
@@ -22,7 +25,12 @@ public class ObjectAudio : MonoBehaviour
             if (this.GetComponent<ReleaseChildren>())
             {
                 this.GetComponent<ReleaseChildren>().Release();
-                PickUp.toRemove = this.gameObject;
+
+                for(int i = 0; i < pickUps.Length; i++)
+                {
+                    pickUps[i].AttemptToRemoveDestroyedObject(this.gameObject);
+                }
+
                 Destroy(this.gameObject);
 
             }

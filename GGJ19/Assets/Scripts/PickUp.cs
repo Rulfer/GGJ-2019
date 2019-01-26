@@ -12,19 +12,8 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float thrust = 10f;
     [SerializeField] private float up_Thrust = 0.5f;
 
-    static public GameObject toRemove = null;
-
     private void Update()
     {
-
-        if (toRemove != null)
-        {
-            if (objects_to_pick_up.Contains(toRemove))
-            {
-                objects_to_pick_up.Remove(toRemove);
-                Debug.Log("Removed destroyed object " + toRemove.transform.name + " from my list");
-            }
-        }
 
         if(held_Object != null)
         {
@@ -58,6 +47,15 @@ public class PickUp : MonoBehaviour
         {
             objects_to_pick_up.Remove(collision.gameObject);
             //Debug.Log("Remove " + collision.gameObject.name + " from list");
+        }
+    }
+
+    public void AttemptToRemoveDestroyedObject(GameObject obj)
+    {
+        if (objects_to_pick_up.Contains(obj))
+        {
+            objects_to_pick_up.Remove(obj);
+            Debug.Log("Remove " + obj.gameObject.name + " from list");
         }
     }
 
