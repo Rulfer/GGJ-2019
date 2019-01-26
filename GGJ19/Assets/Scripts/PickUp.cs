@@ -10,6 +10,7 @@ public class PickUp : MonoBehaviour
 
     [SerializeField] private float held_y_pos_modifier = 0.1f;
     [SerializeField] private float thrust = 10f;
+    [SerializeField] private float up_Thrust = 0.5f;
 
     private void Update()
     {
@@ -80,9 +81,9 @@ public class PickUp : MonoBehaviour
         held_Object.transform.parent = null;
         //held_Object.GetComponent<Rigidbody2D>().AddForce(held_Object.transform.up * thrust, ForceMode2D.Impulse);
         if(left)
-            held_Object.GetComponent<Rigidbody2D>().AddForce(Vector2.left * thrust, ForceMode2D.Impulse);
+            held_Object.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, up_Thrust) * thrust, ForceMode2D.Impulse);
         else
-            held_Object.GetComponent<Rigidbody2D>().AddForce(Vector2.right * thrust, ForceMode2D.Impulse);
+            held_Object.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, up_Thrust) * thrust, ForceMode2D.Impulse);
 
         held_Object.GetComponent<Rigidbody2D>().simulated = true;
 
