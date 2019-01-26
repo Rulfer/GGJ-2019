@@ -15,12 +15,14 @@ public class PlayerPlatformerController : MonoBehaviour
     [HideInInspector] public int throwCounter;
     private float currentSpeed = 0;
 
+    private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     // Use this for initialization
     void Awake()
     {
+        rigid = this.GetComponent<Rigidbody2D>();
         pickUp = this.transform.GetChild(0).GetComponent<PickUp>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -30,7 +32,6 @@ public class PlayerPlatformerController : MonoBehaviour
     private void Update()
     {
         Move();
-        Animate();
         Interact();
     }
 
@@ -139,30 +140,6 @@ public class PlayerPlatformerController : MonoBehaviour
         this.transform.localPosition = new Vector2(nextPos, this.transform.localPosition.y);
     }
 
-    private void Animate()
-    {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-
-        }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-
-        }
-        else
-        {
-            animator.SetBool("move", false);
-
-        }
-        //if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        //{
-        //    animator.SetBool("move", true);
-        //    this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
-        //}
-        //else
-        //    animator.SetBool("move", false);
-    }
-
     private void Interact()
     {
         if(isPlayerOne)
@@ -171,10 +148,12 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 if(pickUp.held_Object == null)
                 {
-                    pickUp.GrabItem();
+                    pickUp.GrabItem(rigid);
                 }
                 else
                 {
+                    rigid.simulated = false;
+                    rigid.mass = 0.0001f;
                     throwCounter += 1;
                     pickUp.ThrowItem(false);
                 }
@@ -186,10 +165,12 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 if (pickUp.held_Object == null)
                 {
-                    pickUp.GrabItem();
+                    pickUp.GrabItem(rigid);
                 }
                 else
                 {
+                    rigid.simulated = false;
+                    rigid.mass = 0.0001f;
                     throwCounter += 1;
                     pickUp.ThrowItem(true);
                 }

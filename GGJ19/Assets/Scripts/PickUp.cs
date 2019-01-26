@@ -51,7 +51,7 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    public void GrabItem()
+    public void GrabItem(Rigidbody2D rigid)
     {
         if (objects_to_pick_up.Count <= 0)
             return;
@@ -74,6 +74,8 @@ public class PickUp : MonoBehaviour
             }
         }
 
+        rigid.mass = held_Object.GetComponent<Rigidbody2D>().mass;
+        rigid.simulated = true;
         held_Object.GetComponent<Rigidbody2D>().simulated = false;
         held_Object.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         held_Object.transform.parent = this.transform;
