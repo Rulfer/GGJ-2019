@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class House : MonoBehaviour
 {
@@ -15,6 +17,11 @@ public class House : MonoBehaviour
     }
 
     private void Update()
+    {
+        AdjustAngularDrag();
+    }
+
+    private void AdjustAngularDrag()
     {
         timer += Time.deltaTime;
         if (timer % 60 >= angularDragChangeRate)
