@@ -12,8 +12,6 @@ public class Side : MonoBehaviour
     {
         elementsInside = new HashSet<GameObject>();
         side = FindObjectOfType<Side>().gameObject;
-        enterCounter = 0;
-        leaveCounter = 0;
     }
 
     public void AddElement(GameObject element)
@@ -25,7 +23,6 @@ public class Side : MonoBehaviour
     {
         if (collision.gameObject.tag == "Throwable")
         {
-            enterCounter += 1;
             elementsInside.Add(collision.gameObject);
         }
     }
@@ -34,7 +31,6 @@ public class Side : MonoBehaviour
     {
         if (collision.gameObject.tag == "Throwable")
         {
-            leaveCounter += 1;
             elementsInside.Remove(collision.gameObject);
         }
     }

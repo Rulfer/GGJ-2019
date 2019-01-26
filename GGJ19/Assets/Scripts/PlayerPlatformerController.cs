@@ -12,6 +12,7 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float min_x_pos;
     [SerializeField] private float speed_Modifier;
     [SerializeField] private float max_Speed;
+    [HideInInspector] public int throwCounter;
     private float currentSpeed = 0;
 
     private SpriteRenderer spriteRenderer;
@@ -23,6 +24,7 @@ public class PlayerPlatformerController : MonoBehaviour
         pickUp = this.transform.GetChild(0).GetComponent<PickUp>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        throwCounter = 0;
     }
 
     private void Update()
@@ -173,6 +175,7 @@ public class PlayerPlatformerController : MonoBehaviour
                 }
                 else
                 {
+                    throwCounter += 1;
                     pickUp.ThrowItem(false);
                 }
             }
@@ -187,6 +190,7 @@ public class PlayerPlatformerController : MonoBehaviour
                 }
                 else
                 {
+                    throwCounter += 1;
                     pickUp.ThrowItem(true);
                 }
             }
