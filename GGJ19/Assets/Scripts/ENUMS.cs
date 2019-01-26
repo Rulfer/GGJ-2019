@@ -5,4 +5,5 @@ using UnityEngine;
 public class ENUMS : MonoBehaviour
 {
     public static string tag_throwable = "Throwable";
+    public static string tag_throwableChild = "ThrowableChild";
 }
