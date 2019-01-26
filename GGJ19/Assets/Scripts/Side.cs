@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class Side : MonoBehaviour
 {
-    public HashSet<GameObject> elementsInside = new HashSet<GameObject>();
-    public int enterCounter;
-    public int leavecounter;
+    [HideInInspector] public HashSet<GameObject> elementsInside = new HashSet<GameObject>();
+    [HideInInspector] public int enterCounter;
+    [HideInInspector] public int leaveCounter;
     GameObject side;
 
     void Start()
     {
         side = FindObjectOfType<Side>().gameObject;
         enterCounter = 0;
-        leavecounter = 0;
+        leaveCounter = 0;
     }
 
     public void AddElement(GameObject element)
@@ -33,7 +33,7 @@ public class Side : MonoBehaviour
     {
         if (collision.gameObject.tag == "Throwable")
         {
-            leavecounter += 1;
+            leaveCounter += 1;
             elementsInside.Remove(collision.gameObject);
         }
     }
