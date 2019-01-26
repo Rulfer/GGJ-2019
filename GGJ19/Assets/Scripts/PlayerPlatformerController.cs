@@ -34,7 +34,7 @@ public class PlayerPlatformerController : MonoBehaviour
         throwCounter = 0;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
         Interact();
