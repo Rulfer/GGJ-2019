@@ -5,8 +5,8 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] private GameObject img_can_pick_up = null;
-    [HideInInspector] public GameObject held_Object = null;
-    [HideInInspector] public List<GameObject> objects_to_pick_up = new List<GameObject>();
+    public GameObject held_Object = null;
+    public List<GameObject> objects_to_pick_up = new List<GameObject>();
 
     [SerializeField] private float held_y_pos_modifier = 0.1f;
     [SerializeField] private float thrust = 10f;
@@ -31,23 +31,22 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collision hit");
-
         if(collision.transform.tag.Equals(ENUMS.tag_throwable))
         {
             objects_to_pick_up.Add(collision.gameObject);
         }
-        else if(collision.transform.tag.Equals(ENUMS.tag_throwableChild))
-        {
-            objects_to_pick_up.Add(collision.transform.parent.gameObject);
-        }
+        //else if(collision.transform.tag.Equals(ENUMS.tag_throwableChild))
+        //{
+        //    objects_to_pick_up.Add(collision.transform.parent.gameObject);
+        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(objects_to_pick_up.Contains(collision.gameObject))
-        { 
+        {
             objects_to_pick_up.Remove(collision.gameObject);
+            Debug.Log("Remove " + collision.gameObject.name + " from list");
         }
     }
 
@@ -74,7 +73,6 @@ public class PickUp : MonoBehaviour
             }
         }
 
-        objects_to_pick_up.Remove(held_Object);
 
         rigid.mass = held_Object.GetComponent<Rigidbody2D>().mass;
         rigid.simulated = true;
@@ -86,6 +84,7 @@ public class PickUp : MonoBehaviour
 
     public void ThrowItem(bool left)
     {
+        objects_to_pick_up.Remove(held_Object);
         held_Object.transform.parent = null;
         //held_Object.GetComponent<Rigidbody2D>().AddForce(held_Object.transform.up * thrust, ForceMode2D.Impulse);
         if(left)
