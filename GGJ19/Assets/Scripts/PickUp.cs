@@ -37,6 +37,10 @@ public class PickUp : MonoBehaviour
         {
             objects_to_pick_up.Add(collision.gameObject);
         }
+        else if(collision.transform.tag.Equals(ENUMS.tag_throwableChild))
+        {
+            objects_to_pick_up.Add(collision.transform.parent.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
