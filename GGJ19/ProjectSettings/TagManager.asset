@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - TableLeg
+  - LargeItemLeg
   - small
-  - 
-  - 
+  - player
+  - LargeItem
   - 
   - 
   - 
