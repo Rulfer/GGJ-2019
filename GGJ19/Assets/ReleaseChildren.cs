@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReleaseChair : MonoBehaviour
+public class ReleaseChildren : MonoBehaviour
 {
     [SerializeField] private Transform[] children;
 

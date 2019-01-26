@@ -19,9 +19,9 @@ public class ObjectAudio : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 5)
         {
             source.Play();
-            if (this.GetComponent<ReleaseChair>())
+            if (this.GetComponent<ReleaseChildren>())
             {
-                this.GetComponent<ReleaseChair>().Release();
+                this.GetComponent<ReleaseChildren>().Release();
                 Destroy(this.gameObject);
             }
         }
