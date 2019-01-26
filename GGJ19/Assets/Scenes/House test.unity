@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f55ac72bda61e41ae711aa90316a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flicker: {fileID: 766581438}
 --- !u!1 &411405513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 766581436}
   - component: {fileID: 766581437}
+  - component: {fileID: 766581438}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -1309,6 +1311,33 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &766581438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766581435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f9d2a43d257cb4eb0ca6aa178b3678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickeringLightStyle: 0
+  campfireMethod: 2
+  campfireIntesityStyle: 1
+  campfireRangeStyle: 1
+  CampfireIntensityBaseValue: 8.13
+  CampfireIntensityFlickerValue: 0
+  CampfireRangeBaseValue: 10
+  CampfireRangeFlickerValue: 0
+  CampfireSineCycleIntensitySpeed: 5
+  CampfireSineCycleRangeSpeed: 5
+  FluorescentFlickerMin: 0.4
+  FluorescentFlickerMax: 0.5
+  FluorescentFlicerPercent: 0.95
+  FluorescentFlickerPlaySound: 0
+  FluorescentFlickerAudioClip: {fileID: 0}
 --- !u!1 &770025978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,6 +2190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f55ac72bda61e41ae711aa90316a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flicker: {fileID: 2016757330}
 --- !u!1 &1637938306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2600,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807459472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ec858f23f0b72594597e2f0845908822, type: 2}
   m_CullingMode: 0
@@ -2772,6 +2802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2016757328}
   - component: {fileID: 2016757329}
+  - component: {fileID: 2016757330}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -2831,3 +2862,30 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2016757330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016757327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f9d2a43d257cb4eb0ca6aa178b3678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickeringLightStyle: 0
+  campfireMethod: 2
+  campfireIntesityStyle: 1
+  campfireRangeStyle: 1
+  CampfireIntensityBaseValue: 8.13
+  CampfireIntensityFlickerValue: 0
+  CampfireRangeBaseValue: 10
+  CampfireRangeFlickerValue: 0
+  CampfireSineCycleIntensitySpeed: 5
+  CampfireSineCycleRangeSpeed: 5
+  FluorescentFlickerMin: 0.4
+  FluorescentFlickerMax: 0.5
+  FluorescentFlicerPercent: 0.95
+  FluorescentFlickerPlaySound: 0
+  FluorescentFlickerAudioClip: {fileID: 0}
