@@ -10,6 +10,8 @@ public class GameEnd : MonoBehaviour
     [SerializeField] private Text outroText;
     [SerializeField] private Text leftSummary;
     [SerializeField] private Text rightSummary;
+    [SerializeField] private AudioClip victoryJingle;
+    private Camera camera;
     private Side right;
     private Side left;
     private House house;
@@ -20,6 +22,7 @@ public class GameEnd : MonoBehaviour
     void Start()
     {
         gameEnded = false;
+        camera = FindObjectOfType<Camera>();
         house = FindObjectOfType<House>();
         foreach(PlayerPlatformerController player in FindObjectsOfType<PlayerPlatformerController>())
         {
@@ -63,6 +66,8 @@ public class GameEnd : MonoBehaviour
         if (gameEnded)
             return;
         gameEnded = true;
+        camera.GetComponent<AudioSource>().clip = victoryJingle;
+        camera.GetComponent<AudioSource>().Play();
         string restart = "\n\nPress SPACE to Restart";
         if (zAngle <= 180.0f)
         {

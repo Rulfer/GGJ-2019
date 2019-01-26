@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14590,6 +14590,7 @@ MonoBehaviour:
   outroText: {fileID: 1384067608}
   leftSummary: {fileID: 777539745}
   rightSummary: {fileID: 1320066454}
+  victoryJingle: {fileID: 8300000, guid: 8d86636b54ee0e540a51d7adb7efdc66, type: 3}
 --- !u!82 &1807459479
 AudioSource:
   m_ObjectHideFlags: 0
