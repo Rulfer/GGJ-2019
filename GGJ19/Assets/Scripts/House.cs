@@ -26,7 +26,7 @@ public class House : MonoBehaviour
         timer += Time.deltaTime;
         if (timer % 60 >= angularDragChangeRate)
         {
-            house.GetComponent<Rigidbody2D>().angularDrag /= 2;
+            house.GetComponent<Rigidbody2D>().angularDrag /= 1.5f;
             timer = 0.0f;
         }
     }
