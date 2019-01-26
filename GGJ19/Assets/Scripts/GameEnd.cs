@@ -13,12 +13,21 @@ public class GameEnd : MonoBehaviour
     private Side right;
     private Side left;
     private House house;
+    private PlayerPlatformerController leftPlayer;
+    private PlayerPlatformerController rightPlayer;
     private float victoryAngle = 20.0f;
 
     void Start()
     {
         gameEnded = false;
         house = FindObjectOfType<House>();
+        foreach(PlayerPlatformerController player in FindObjectsOfType<PlayerPlatformerController>())
+        {
+            if (player.name == "PlayerOne")
+                leftPlayer = player;
+            else
+                rightPlayer = player;
+        }
         foreach (Side side in FindObjectsOfType<Side>())
         {
             if (side.name.ToLower().Contains("left"))
@@ -54,7 +63,7 @@ public class GameEnd : MonoBehaviour
         if (gameEnded)
             return;
         gameEnded = true;
-        string restart = "\n\nPress Space to Restart";
+        string restart = "\n\nPress SPACE to Restart";
         if (zAngle <= 180.0f)
         {
             outroText.text = "Right player wins!" + restart;
@@ -63,7 +72,7 @@ public class GameEnd : MonoBehaviour
         {
             outroText.text = "Left player wins!" + restart;
         }
-        rightSummary.text = "Threw " + right.leaveCounter + " element(s)\nHas " + right.elementsInside.Count + " element(s).";
-        leftSummary.text = "Threw " + left.leaveCounter + " element(s)\nHas " + left.elementsInside.Count + " element(s).";
+        rightSummary.text = "Threw " + rightPlayer.throwCounter.ToString() + " item(s)";
+        leftSummary.text = "Threw " + leftPlayer.throwCounter.ToString() + " item(s)";
     }
 }
