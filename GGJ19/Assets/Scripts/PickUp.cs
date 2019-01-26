@@ -74,6 +74,8 @@ public class PickUp : MonoBehaviour
             }
         }
 
+        objects_to_pick_up.Remove(held_Object);
+
         rigid.mass = held_Object.GetComponent<Rigidbody2D>().mass;
         rigid.simulated = true;
         held_Object.GetComponent<Rigidbody2D>().simulated = false;

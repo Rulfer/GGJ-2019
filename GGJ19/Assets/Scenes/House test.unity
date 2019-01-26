@@ -4282,7 +4282,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233471961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.036, y: -0.5997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1385248917}
@@ -5038,6 +5038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1385248917}
+  - component: {fileID: 1385248918}
   m_Layer: 0
   m_Name: Painting
   m_TagString: Untagged
@@ -5053,13 +5054,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385248916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.041, y: -3.91, z: -0.52}
+  m_LocalPosition: {x: 0.0001, y: -3.2901, z: -0.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1233471962}
   m_Father: {fileID: 628659048}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385248918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385248916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f55ac72bda61e41ae711aa90316a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flicker: {fileID: 0}
 --- !u!1 &1393412112
 GameObject:
   m_ObjectHideFlags: 0
