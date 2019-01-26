@@ -15,14 +15,16 @@ public class ObjectAudio : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Magnitude: " + collision.relativeVelocity.magnitude);
+        //Debug.Log("Magnitude: " + collision.relativeVelocity.magnitude);
         if (collision.relativeVelocity.magnitude > 5)
         {
             source.Play();
             if (this.GetComponent<ReleaseChildren>())
             {
                 this.GetComponent<ReleaseChildren>().Release();
+                PickUp.toRemove = this.gameObject;
                 Destroy(this.gameObject);
+
             }
         }
 

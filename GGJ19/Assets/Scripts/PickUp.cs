@@ -12,8 +12,20 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float thrust = 10f;
     [SerializeField] private float up_Thrust = 0.5f;
 
+    static public GameObject toRemove = null;
+
     private void Update()
     {
+
+        if (toRemove != null)
+        {
+            if (objects_to_pick_up.Contains(toRemove))
+            {
+                objects_to_pick_up.Remove(toRemove);
+                Debug.Log("Removed destroyed object " + toRemove.transform.name + " from my list");
+            }
+        }
+
         if(held_Object != null)
         {
             if (img_can_pick_up.activeSelf)
@@ -27,7 +39,6 @@ public class PickUp : MonoBehaviour
         else
             img_can_pick_up.SetActive(false);
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,7 +57,7 @@ public class PickUp : MonoBehaviour
         if(objects_to_pick_up.Contains(collision.gameObject))
         {
             objects_to_pick_up.Remove(collision.gameObject);
-            Debug.Log("Remove " + collision.gameObject.name + " from list");
+            //Debug.Log("Remove " + collision.gameObject.name + " from list");
         }
     }
 
@@ -54,6 +65,7 @@ public class PickUp : MonoBehaviour
     {
         if (objects_to_pick_up.Count <= 0)
             return;
+
 
         if (objects_to_pick_up.Count == 1)
             held_Object = objects_to_pick_up[0];
@@ -67,8 +79,11 @@ public class PickUp : MonoBehaviour
 
                 if (distance < currentLowest)
                 {
-                    held_Object = objects_to_pick_up[i];
-                    currentLowest = distance;
+                    if(objects_to_pick_up[i] != null)
+                    {
+                        held_Object = objects_to_pick_up[i];
+                        currentLowest = distance;
+                    }
                 }
             }
         }
