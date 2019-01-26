@@ -68,6 +68,8 @@ public class GameEnd : MonoBehaviour
         gameEnded = true;
         camera.GetComponent<AudioSource>().clip = victoryJingle;
         camera.GetComponent<AudioSource>().Play();
+        camera.GetComponent<AudioSource>().loop = false;
+
         string restart = "\n\nPress SPACE to Restart";
         if (zAngle <= 180.0f)
         {

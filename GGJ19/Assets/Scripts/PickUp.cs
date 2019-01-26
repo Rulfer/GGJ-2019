@@ -12,6 +12,9 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float thrust = 10f;
     [SerializeField] private float up_Thrust = 0.5f;
 
+    private int previousLayer = 0;
+    private float previousMass = 0;
+
     private void Update()
     {
 
@@ -19,6 +22,9 @@ public class PickUp : MonoBehaviour
         {
             if (img_can_pick_up.activeSelf)
                 img_can_pick_up.SetActive(false);
+
+            held_Object.transform.localPosition = new Vector2(0, held_y_pos_modifier);
+
 
             return;
         }
@@ -86,26 +92,45 @@ public class PickUp : MonoBehaviour
             }
         }
 
+        //Remember previous layer, and set to "grabbed"
+        //Freeze y position
+        //Freeze z position, and reset to 0
+        //Set mass to 0.0001;
+
 
         rigid.mass = held_Object.GetComponent<Rigidbody2D>().mass;
         rigid.simulated = true;
-        held_Object.GetComponent<Rigidbody2D>().simulated = false;
+
+
+        //held_Object.GetComponent<Rigidbody2D>().simulated = false;
+
+        previousLayer = held_Object.layer;
+        held_Object.layer = 13;
+
         held_Object.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        held_Object.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
         held_Object.transform.parent = this.transform;
         held_Object.transform.localPosition = new Vector2(0, held_y_pos_modifier);
+        held_Object.transform.eulerAngles = this.transform.parent.eulerAngles;
     }
 
     public void ThrowItem(bool left)
     {
         objects_to_pick_up.Remove(held_Object);
         held_Object.transform.parent = null;
+
+        held_Object.layer = previousLayer;
+        held_Object.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+
+
         //held_Object.GetComponent<Rigidbody2D>().AddForce(held_Object.transform.up * thrust, ForceMode2D.Impulse);
-        if(left)
+        if (left)
             held_Object.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, up_Thrust) * thrust, ForceMode2D.Impulse);
         else
             held_Object.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, up_Thrust) * thrust, ForceMode2D.Impulse);
 
-        held_Object.GetComponent<Rigidbody2D>().simulated = true;
+        //held_Object.GetComponent<Rigidbody2D>().simulated = true;
 
         held_Object = null;
     }
