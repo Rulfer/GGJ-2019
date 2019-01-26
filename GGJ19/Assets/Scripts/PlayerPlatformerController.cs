@@ -152,7 +152,6 @@ public class PlayerPlatformerController : MonoBehaviour
                 }
                 else
                 {
-                    rigid.simulated = false;
                     rigid.mass = 0.0001f;
                     throwCounter += 1;
                     pickUp.ThrowItem(false);
@@ -169,7 +168,6 @@ public class PlayerPlatformerController : MonoBehaviour
                 }
                 else
                 {
-                    rigid.simulated = false;
                     rigid.mass = 0.0001f;
                     throwCounter += 1;
                     pickUp.ThrowItem(true);

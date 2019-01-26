@@ -5,7 +5,7 @@ using UnityEngine;
 public class Lamp : MonoBehaviour
 {
     Transform house;
-    [SerializeField] private flickeringLight flicker;
+    [SerializeField] private flickeringLight flicker = null;
 
 
     private void Start()
@@ -19,6 +19,9 @@ public class Lamp : MonoBehaviour
         this.transform.eulerAngles = new Vector3(0, 0, -house.transform.rotation.z);
 
         //Debug.Log( house.transform.localEulerAngles.z);
+
+        if (flicker == null)
+            return;
 
         float zAngle = 0;
 
