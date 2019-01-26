@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16307,13 +16307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbfe74572d0260a4f8e046128a150fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  children:
-  - {fileID: 714678129}
-  - {fileID: 1207464369}
-  - {fileID: 550812462}
-  - {fileID: 925059999}
-  - {fileID: 1553420295}
---- !u!82 &1516683258
+  gameEnded: 0
+  outroText: {fileID: 1384067608}
+  leftSummary: {fileID: 777539745}
+  rightSummary: {fileID: 1320066454}
+  victoryJingle: {fileID: 8300000, guid: 8d86636b54ee0e540a51d7adb7efdc66, type: 3}
+--- !u!82 &1807459479
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
