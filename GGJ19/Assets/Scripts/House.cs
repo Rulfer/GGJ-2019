@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class House : MonoBehaviour
 {
     GameObject house;
+    private Side right;
+    private Side left;
     private float startAngularDrag = 100;
     private float angularDragChangeRate = 15.0f;
     private float victoryAngle = 20.0f;
@@ -13,6 +17,13 @@ public class House : MonoBehaviour
     {
         house = FindObjectOfType<House>().gameObject;
         house.GetComponent<Rigidbody2D>().angularDrag = startAngularDrag;
+        foreach(Side side in FindObjectsOfType<Side>())
+        {
+            if (side.name.ToLower().Contains("left"))
+                left = side;
+            else
+                right = side;
+        }
         timer = 0.0f;
     }
 
@@ -45,6 +56,8 @@ public class House : MonoBehaviour
             {
                 Debug.Log("Left side wins!");
             }
+            Debug.Log("Right side threw " + right.leaveCounter + " elements and has " + right.elementsInside.Count + " element(s).");
+            Debug.Log("Left side threw " + left.leaveCounter + " elements and has " + left.elementsInside.Count + " element(s).");
         }
         if (house.transform.position.y < -20)
         {
