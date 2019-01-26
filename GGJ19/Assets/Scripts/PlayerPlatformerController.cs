@@ -8,6 +8,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
     public bool isPlayerOne = false;
 
+    [SerializeField] private float max_x_pos;
+    [SerializeField] private float min_x_pos;
     [SerializeField] private float speed_Modifier;
     [SerializeField] private float max_Speed;
     private float currentSpeed = 0;
@@ -77,7 +79,15 @@ public class PlayerPlatformerController : MonoBehaviour
             animator.SetBool("move", false);
         }
 
-        this.transform.localPosition = new Vector2(this.transform.localPosition.x + currentSpeed, this.transform.localPosition.y);
+        //Restrict movement to be inside borders
+        float nextPos = this.transform.localPosition.x + currentSpeed;
+        if (nextPos > max_x_pos)
+            nextPos = max_x_pos;
+        else if (nextPos < min_x_pos)
+            nextPos = min_x_pos;
+
+        //Update player position
+        this.transform.localPosition = new Vector2(nextPos, this.transform.localPosition.y);
     }
 
     private void PlayerTwoMove()
@@ -116,7 +126,15 @@ public class PlayerPlatformerController : MonoBehaviour
             animator.SetBool("move", false);
         }
 
-        this.transform.localPosition = new Vector2(this.transform.localPosition.x + currentSpeed, this.transform.localPosition.y);
+        //Restrict movement to be inside borders
+        float nextPos = this.transform.localPosition.x + currentSpeed;
+        if (nextPos > max_x_pos)
+            nextPos = max_x_pos;
+        else if (nextPos < min_x_pos)
+            nextPos = min_x_pos;
+
+        //Update player position
+        this.transform.localPosition = new Vector2(nextPos, this.transform.localPosition.y);
     }
 
     private void Animate()

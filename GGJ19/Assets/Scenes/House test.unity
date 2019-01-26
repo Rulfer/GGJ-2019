@@ -657,6 +657,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 0
+  max_x_pos: 5.22
+  min_x_pos: -5.02
   speed_Modifier: 1
   max_Speed: 0.1
 --- !u!4 &616507257
@@ -667,7 +669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616507254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.52, y: -5.85, z: 0}
+  m_LocalPosition: {x: 5.22, y: -5.85, z: 0}
   m_LocalScale: {x: 1.6989, y: 1.6989, z: 1.6989}
   m_Children:
   - {fileID: 90725647}
@@ -1445,7 +1447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067305377}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.104, y: -5.85, z: 0}
+  m_LocalPosition: {x: -5.02, y: -5.85, z: 0}
   m_LocalScale: {x: 1.6989, y: 1.6989, z: 1.6989}
   m_Children:
   - {fileID: 411405514}
@@ -1466,6 +1468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerOne: 1
+  max_x_pos: 5.22
+  min_x_pos: -5.02
   speed_Modifier: 1
   max_Speed: 0.1
 --- !u!95 &1067305380
