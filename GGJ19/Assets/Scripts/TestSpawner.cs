@@ -27,8 +27,8 @@ public class TestSpawner : MonoBehaviour
         else
             side = sides[Random.Range(0, sides.Length)];
         GameObject element = prefabs[Random.Range(0, prefabs.Count)];
-        element.GetComponent<Rigidbody2D>().mass = Random.Range(1, 10);
         element = Instantiate(element, side.transform.position, Quaternion.identity);
+        element.GetComponent<Rigidbody2D>().mass = Random.Range(1, 10);
         side.AddElement(element);
     }
 
