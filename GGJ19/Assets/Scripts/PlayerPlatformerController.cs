@@ -34,8 +34,9 @@ public class PlayerPlatformerController : MonoBehaviour
         throwCounter = 0;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        this.transform.eulerAngles = this.transform.parent.eulerAngles;
         Move();
         Interact();
     }
