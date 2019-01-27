@@ -63,7 +63,7 @@ public class PlayerPlatformerController : MonoBehaviour
             else
                 currentSpeed = -max_Speed;
             animator.SetBool("move", true);
-            this.transform.GetChild(0).localScale = new Vector2(-4.998992f, 4.998992f);
+            this.transform.localScale = new Vector2(-1, 1);
 
             noInput = false;
         }
@@ -75,7 +75,7 @@ public class PlayerPlatformerController : MonoBehaviour
                 currentSpeed = max_Speed;
 
             animator.SetBool("move", true);
-            this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
+            this.transform.localScale = new Vector2(1, 1);
 
             noInput = false;
         }
@@ -117,7 +117,7 @@ public class PlayerPlatformerController : MonoBehaviour
                 currentSpeed = -max_Speed;
 
             animator.SetBool("move", true);
-            this.transform.GetChild(0).localScale = new Vector2(-4.998992f, 4.998992f);
+            this.transform.localScale = new Vector2(-1, 1);
             noInput = false;
         }
         if (Input.GetKey(KeyCode.RightArrow))
@@ -128,7 +128,7 @@ public class PlayerPlatformerController : MonoBehaviour
                 currentSpeed = max_Speed;
 
             animator.SetBool("move", true);
-            this.transform.GetChild(0).localScale = new Vector2(4.998992f, 4.998992f);
+            this.transform.localScale = new Vector2(1, 1);
             noInput = false;
         }
 
