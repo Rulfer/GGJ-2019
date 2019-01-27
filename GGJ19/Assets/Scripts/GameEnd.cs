@@ -17,7 +17,7 @@ public class GameEnd : MonoBehaviour
     private House house;
     private PlayerPlatformerController leftPlayer;
     private PlayerPlatformerController rightPlayer;
-    private float victoryAngle = 20.0f;
+    private float victoryAngle = 22.0f;
 
     void Start()
     {
